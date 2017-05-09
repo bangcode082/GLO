@@ -12,13 +12,15 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('customer.index');
 });
 
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
+
+Route::resource('menu','MenuController');
 
 
 // Route::get('/addadmin',function(){
