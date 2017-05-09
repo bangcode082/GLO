@@ -19,14 +19,16 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/addadmin',function(){
-	$user= new App\User();
 
-	$user->name="dian";
-	$user->email="dian@gmail.com";
-	$user->password=bcrypt('123456');
 
-	$user->save();
+// Route::get('/addadmin',function(){
+// 	$user= new App\User();
 
-	return "berhasil tambah admin";
-});
+// 	$user->name="dian";
+// 	$user->email="dian@gmail.com";
+// 	$user->password=bcrypt('123456');
+
+// 	$user->save();
+
+// 	return "berhasil tambah admin";
+// });
