@@ -11,16 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('customer.index');
-});
+Route::get('/', 'HomeController@index');
+
+Route::get('halaman/{jenis}','HomeController@menu');
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'MenuController@index');
 
 
 Route::resource('menu','MenuController');
+
+Route::get('detil-menu/{id}','HomeController@show');
 
 
 // Route::get('/addadmin',function(){

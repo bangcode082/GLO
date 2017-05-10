@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use App\Menu;
 
 class HomeController extends Controller
 {
@@ -12,10 +13,7 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    
 
     /**
      * Show the application dashboard.
@@ -23,7 +21,22 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('home');
+    {   
+    
+        $menu = Menu::orderBy('id','desc')->paginate(8);
+        $jenis=null;
+
+        return view('customer.partial._home',compact('menu','jenis'));
+    }
+
+    public function menu($jenis){
+        $menu=Menu::where('jenis',$jenis)->paginate(8);
+
+        return view('customer.partial._home',compact('menu','jenis'));
+    }
+
+    public function show($id){
+        $menu=Menu::findOrFail($id);
+        return view('customer.partial._detil',compact('menu'));
     }
 }

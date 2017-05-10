@@ -46,10 +46,12 @@
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
+                @if(auth()->check())
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/menu') }}">Menu</a></li>
                     <li><a href="{{ url('/menu') }}">Pesanan</a></li>
                 </ul>
+                @endif
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">

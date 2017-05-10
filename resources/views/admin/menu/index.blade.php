@@ -22,19 +22,25 @@
 						</thead>
 						<tbody>
 							@foreach($menu as $val)
-							<td>{{ $val->human_status }}</td>
-							<td>{{ $val->nama }}</td>
-							<td>Rp {{ number_format($val->harga, 2) }}</td>
-							<td>
-								{!! Form::model($val, ['route' => ['menu.destroy', $val], 'method' => 'delete', 'class' => 'form-inline','files'=>true] ) !!}		
-								<a href="{{ route('menu.show',$val->id) }}" class="btn btn-xs btn-success">detil</a>
-								
-								{!! Form::submit('Hapus', ['class'=>'btn btn-xs btn-danger j']) !!}
-								{!! Form::close()!!}
-							</td>
+							<tr>
+								<td>{{ $val->human_status }}</td>
+								<td>{{ $val->nama }}</td>
+								<td>Rp {{ number_format($val->harga, 2) }}</td>
+								<td>
+									{!! Form::model($val, ['route' => ['menu.destroy', $val], 'method' => 'delete', 'class' => 'form-inline','files'=>true] ) !!}		
+									<a href="{{ route('menu.show',$val->id) }}" class="btn btn-xs btn-success">detil</a>
+
+									{!! Form::submit('Hapus', ['class'=>'btn btn-xs btn-danger j']) !!}
+									{!! Form::close()!!}
+								</td>
+							</tr>
 							@endforeach
 						</tbody>
 					</table>
+
+					<div>
+						{{$menu->links()}}
+					</div>
 				</div>
 			</div>
 			

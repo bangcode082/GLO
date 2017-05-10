@@ -1,64 +1,57 @@
 <!DOCTYPE html>
-
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
-
-	<!-- Styles -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-	{{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
-
-	<style>
-
-		h3{
-			text-align: center;
-			padding: 30px;
-			font-family: calibri;
-			font-size: 40px;
-			color: white;
-		}
-	</style>
+	<link rel="stylesheet" href="{{asset('asset/bootstrap.min.css')}}">
+	<title>MENU MAKANAN</title>
+<!-- 	<script type="text/javascript" src="js/jquery-1.12.2.js"></script>
+	<script type="text/javascript" src="js/jquery.js"></script> -->
 </head>
-<body background="{{ url('background/3.jpg') }}">
-	
-
+<body>
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">GLO (Go onLine Order)</a>
+				<a class="navbar-brand" href="{{ url('/') }}">GLO (Go onLine Order)</a>
 			</div>
+			<ul class="nav navbar-nav">
+				<li ><a href="{{ url('halaman/food') }}">Menu Makanan</a></li>
+				<li><a href="{{ url('halaman/drink') }}">Menu Minuman</a></li>
+				<li><a href="{{ url('halaman/package') }}">Menu Paket</a></li>
+				<li><a href="#">Menu Recommended</a></li>	
+				@if(auth()->check())
+				<li><a href="{{ url('home') }}">Dashboard</a></li>	
+				@endif
+			</ul>
+
+			
 		</div>
 	</nav>
 
-	<div class="container" align="center">
+	
 
-		<div class="row">
-			<div class="col-md-6 col-md-offset-3" style="background-color: rgba(0,0,0,0.7);width: 600px; min-height: 200px;">    
-				<h3>SELAMAT DATANG DI GLO, SILAHKAN ORDER</h3><br><br><br>
-
-				<form class="form-horizontal" method="post" action="#">
-					<div class="form-group">
-						<label class="col-sm-2 control-label" style="color: white;"><b>Nama Pelanggan</b></label>
-						<div class="col-sm-7">
-							<input type="text" class="form-control" name="nama" placeholder="Masukkan Nama Anda" required>
-						</div>
-					</div>
-
-
-					<div class="form-group">
-						<label class="col-sm-2 control-label" style="color: white;"><b>Nomor meja</b></label>
-						<div class="col-sm-7">
-							<input type="number" class="form-control" name="harga" maxlength="50" placeholder="Masukkan Nomor Meja Anda" required>
-						</div>
-					</div>
-					<button type="button" class="btn btn-success"><a href="#"><b>START</b></a></button>
-				</form>
-
-			</div>
+	
+	<!-- <div class="form-group"> 
+		<div class="col-sm-offset-2 col-sm-10">
+			<button type="submit" class="btn btn-default"><a href="#.php">PESAN MAKANAN</button>
+			<script type="text/javascript">window.alert(Terimakasih...Anda Berhasil Memesan Makanan ^_^)</script>
+			<a href="menumakanan.php">Cancel</a>
 		</div>
+	</div> -->
+
+	<div class="container">
+		@yield('content')
+
 	</div>
+
+	
+	<div class="container-fluid" style="background-color: black; height: 150px;" >
+		<footer align="center" style="margin-top: 50px; color: white;">
+			Copyright &copy DianOjaMike : GLO (Go onLine Order)<br>
+			Jalan Kaliurang km.14,5 Telp : 0778412328 <br>
+			E-mail : goonlineorder@gmail.com
+		</footer>
+	</div>	
+	
 
 </body>
 </html>
